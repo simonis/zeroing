@@ -18,8 +18,10 @@ export PATH=/share/software/procps-master_bin/bin:$PATH
 enable -n kill
 export FC=/priv/simonisv/Git/fireCRaCer/deps
 alias la='ls -la'
+alias c='clear'
 
-export PS1="\[\e]0;\u@aws: \w\a\]\[\033[01;32m\]\u@aws\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "
+# export PS1="\[\e]0;\u@aws: \w\a\]\[\033[01;32m\]\u@aws\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "
+export PS1="$ "
 
 DIR=$1
 
@@ -31,7 +33,8 @@ if [ "$1" == "firecracker2" ]; then
 else
 if [ "$1" == "petclinic" ]; then
   export CONSOLE_LOG_PATTERN="%clr(%d{hh:mm:ss.SSS}){faint} %clr(%.-1p) %.-65m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
-  export _JAVA_OPTIONS="-Xmx512m -XX:+UseSerialGC -XX:+PerfDisableSharedMem -Dlogging.level.org.springframework.web.filter.CommonsRequestLoggingFilter=DEBUG -DMyCommandLineRunner.jsonProcessing=true"
+  export CRAC_CRIU_PATH=/priv/simonisv/Git/criu/criu/criu
+  export _JAVA_OPTIONS="-Xmx512m -XX:+UseSerialGC -Dlogging.level.org.springframework.web.filter.CommonsRequestLoggingFilter=DEBUG -DMyCommandLineRunner.jsonProcessing=true"
 else
 if [ "$1" == "crac2" ]; then
 :

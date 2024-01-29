@@ -1,5 +1,17 @@
 #1
+java -XX:CRaCCheckpointTo=/tmp/petclinic-crac \
+       -XX:CREngine=pauseengine \
+       -Djdk.crac.resource-policies=$FC/ignore.yaml \
+       -jar $FC/spring-petclinic-rest-3.2.1-exec.jar
+#1
+java -XX:CRaCRestoreFrom=/tmp/petclinic-crac
+#1
+java -XX:CRaCCheckpointTo=/tmp/petclinic-crac \
+       -Djdk.crac.resource-policies=$FC/ignore.yaml \
+       -jar $FC/spring-petclinic-rest-3.2.1-exec.jar
+#1
 criu restore --shell-job --display-stats \
                --images-dir /tmp/petclinic-criu
 #1
-java -jar $FC/spring-petclinic-rest-3.2.1-exec.jar
+java  -XX:+PerfDisableSharedMem \
+        -jar $FC/spring-petclinic-rest-3.2.1-exec.jar

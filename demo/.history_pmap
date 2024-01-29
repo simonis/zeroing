@@ -1,7 +1,9 @@
 #1
+kill -q 1 -SIGRTMIN+2 `pgrep -f petclinic-rest`
+#1
 du -sh /tmp/petclinic-criu
 #1
 pmap -x `pgrep -f petclinic-rest` | tail -1
 #1
-curl --silent http://localhost:9966/petclinic/api/owners \
+curl --silent http://localhost:9966/petclinic/api/pets \
        | python3 -m json.tool | tail
