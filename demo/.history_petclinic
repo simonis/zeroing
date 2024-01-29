@@ -1,0 +1,5 @@
+#1
+criu restore --shell-job --display-stats \
+               --images-dir /tmp/petclinic-criu
+#1
+java -jar $FC/spring-petclinic-rest-3.2.1-exec.jar

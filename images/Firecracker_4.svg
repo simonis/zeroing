@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="60cm" height="36cm" viewBox="119 187 1182 714" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs/>
+  <g id="Background"/>
+  <g id="Kernel">
+    <rect style="fill: #bfbfbf; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="120" y="800" width="1180" height="100" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="660" y="888">
+      <tspan x="660" y="888">Host Kernel</tspan>
+    </text>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="740" y="840">
+      <tspan x="740" y="840"></tspan>
+    </text>
+    <rect style="fill: #ffa500; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="132.134" y="820.75" width="1157.41" height="35" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="691" y="845.5">
+      <tspan x="691" y="845.5">KVM</tspan>
+    </text>
+  </g>
+  <g id="Userspace">
+    <g>
+      <rect style="fill: #e5e5e5; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="120" y="188.911" width="1180" height="591.089" rx="0" ry="0"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="710" y="488.355">
+        <tspan x="710" y="488.355"></tspan>
+      </text>
+    </g>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="642" y="218.998">
+      <tspan x="642" y="218.998">Host Userspace</tspan>
+    </text>
+  </g>
+  <g id="Firecracker">
+    <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="138" y="238.5" width="440" height="459" rx="0" ry="0"/>
+    <text font-size="51.9289" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="239" y="656.5">
+      <tspan x="239" y="656.5">..</tspan>
+    </text>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="574.6" y1="651.476" x2="689.63" y2="651.228"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="574.589,646.476 564.6,651.498 574.611,656.476 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="689.641,656.228 699.63,651.206 689.619,646.228 "/>
+    </g>
+    <rect style="fill: #add8e6; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="153" y="622" width="80" height="60" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="164" y="645">
+      <tspan x="164" y="645">vCPU1</tspan>
+      <tspan x="164" y="667.578">thread</tspan>
+    </text>
+    <rect style="fill: #add8e6; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="277.3" y="621" width="80" height="60" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="288.3" y="644">
+      <tspan x="288.3" y="644">vCPUn</tspan>
+      <tspan x="288.3" y="666.578">thread</tspan>
+    </text>
+    <rect style="fill: #add8e6; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="379.3" y="621" width="80" height="60" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="390.3" y="644">
+      <tspan xml:space="preserve" x="390.3" y="644"> VMM</tspan>
+      <tspan x="390.3" y="666.578">thread</tspan>
+    </text>
+    <rect style="fill: #add8e6; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="483.6" y="621.5" width="80" height="60" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="494.6" y="644.5">
+      <tspan xml:space="preserve" x="494.6" y="644.5">  API</tspan>
+      <tspan x="494.6" y="667.078">thread</tspan>
+    </text>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="584.18" y="649.05">
+      <tspan x="584.18" y="649.05">REST-client</tspan>
+    </text>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="291" y="264">
+      <tspan x="291" y="264">Firecracker VMM</tspan>
+    </text>
+  </g>
+  <g id="Guest Kernel">
+    <rect style="fill: #bfbfbf; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="154" y="539" width="410" height="60" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="318" y="559">
+      <tspan x="318" y="559">Guest Kernel</tspan>
+    </text>
+    <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="315" y="567" width="106" height="28.5" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="327" y="587.5">
+      <tspan x="327" y="587.5">virtio-net</tspan>
+    </text>
+    <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="430.3" y="567" width="126.7" height="28.5" rx="0" ry="0"/>
+    <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="442.3" y="587.5">
+      <tspan x="442.3" y="587.5">virtio-block</tspan>
+    </text>
+  </g>
+  <g id="Devices">
+    <g>
+      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="136.3" y="735" width="89.7" height="28.5" rx="0" ry="0"/>
+      <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="146.3" y="755.5">
+        <tspan x="146.3" y="755.5">tap-dev</tspan>
+      </text>
+      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="232.6" y="734.5" width="106" height="28.5" rx="0" ry="0"/>
+      <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="241.6" y="755">
+        <tspan x="241.6" y="755">block-dev</tspan>
+      </text>
+      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="346.9" y="735" width="53.1" height="28.5" rx="0" ry="0"/>
+      <text font-size="18.0622" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="358.9" y="755.5">
+        <tspan x="358.9" y="755.5">file</tspan>
+      </text>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="181.15,724 181.15,717.5 373.45,717.5 373.45,724 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="176.15,724 181.15,734 186.15,724 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="368.45,724 373.45,734 378.45,724 "/>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="285.794,717.416 285.6,717.416 285.6,723.5 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="280.6,723.5 285.6,733.5 290.6,723.5 "/>
+    </g>
+    <g>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="368,595.5 368,604.5 402.3,604.5 402.3,609 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="397.3,609 402.3,619 407.3,609 "/>
+    </g>
+    <g>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="493.65,595.5 493.65,605.5 436.928,605.5 436.928,608.838 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="431.928,608.838 436.928,618.838 441.928,608.838 "/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="419.3" y1="681" x2="419.145" y2="807.202"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="414.145,807.196 419.133,817.202 424.145,807.208 "/>
+    </g>
+    <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="419.3,681 419.3,706.75 285.698,706.75 285.698,717.416 "/>
+  </g>
+</svg>

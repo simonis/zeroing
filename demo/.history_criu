@@ -1,0 +1,5 @@
+#1
+criu dump --tcp-established --tree `pgrep -f petclinic-rest` \
+            --shell-job --leave-running --display-stats \
+            --images-dir /tmp/petclinic-criu
+

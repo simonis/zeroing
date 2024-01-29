@@ -1,0 +1,7 @@
+#1
+du -sh /tmp/petclinic-criu
+#1
+pmap -x `pgrep -f petclinic-rest` | tail -1
+#1
+curl --silent http://localhost:9966/petclinic/api/owners \
+       | python3 -m json.tool | tail
