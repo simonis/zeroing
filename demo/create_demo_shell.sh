@@ -14,6 +14,9 @@ export PATH=/priv/simonisv/Git/fireCRaCer:/priv/simonisv/output/crac-opt/images/
 # Need a new version of 'kill' which can pass integer value with the signal using sigqueue
 # See: https://gitlab.com/procps-ng/procps/-/merge_requests/32
 export PATH=/share/software/procps-master_bin/bin:$PATH
+# Need a new version of ssh (8.3+) which supports environment variables for 'IdentityFile' in ~/.ssh/config
+# See: https://www.openssh.com/releasenotes.html
+export PATH=/share/software/openssh-9.6p1_bin/bin:$PATH
 # Disable the bash builtin 'kill'
 enable -n kill
 export FC=/priv/simonisv/Git/fireCRaCer/deps
@@ -39,8 +42,10 @@ else
 if [ "$1" == "crac2" ]; then
 :
 else
-if [ "$1" == "firecracer" ]; then
-:
+if [ "$1" == "firecracker" ]; then
+  export FC_JAVA_OPTIONS="-Xmx512m -Xms512m -XX:+UseSerialGC -DMyCommandLineRunner.jsonProcessing=true -XX:CRaCCheckpointTo=/tmp/petclinic-crac -XX:CREngine=pauseengine -Djdk.crac.resource-policies=/opt/tools/crac-resource-policies.yaml"
+  export BOOT_ARGS="sshd=true"
+  export VCPU_COUNT=8
 else
 if [ "$1" == "firecracerclone" ]; then
   DIR="firecracer"

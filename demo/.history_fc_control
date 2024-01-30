@@ -1,0 +1,6 @@
+#1
+du -sh /tmp/petclinic-fc
+#1
+fireCRaCer.sh -s /tmp/petclinic-fc
+#1
+ssh root@172.16.0.2 'jattach `pgrep java` jcmd JDK.checkpoint'
