@@ -20,7 +20,7 @@ export PATH=/share/software/openssh-9.6p1_bin/bin:$PATH
 # Disable the bash builtin 'kill'
 enable -n kill
 export FC=/priv/simonisv/Git/fireCRaCer/deps
-alias la='ls -la'
+alias la='ls -lago'
 alias c='clear'
 
 # export PS1="\[\e]0;\u@aws: \w\a\]\[\033[01;32m\]\u@aws\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "
@@ -44,8 +44,10 @@ if [ "$1" == "crac2" ]; then
 else
 if [ "$1" == "firecracker" ]; then
   export FC_JAVA_OPTIONS="-Xmx512m -Xms512m -XX:+UseSerialGC -DMyCommandLineRunner.jsonProcessing=true -XX:CRaCCheckpointTo=/tmp/petclinic-crac -XX:CREngine=pauseengine -Djdk.crac.resource-policies=/opt/tools/crac-resource-policies.yaml"
-  export BOOT_ARGS="sshd=true"
+  export BOOT_ARGS="sshd=true loglevel=6"
   export VCPU_COUNT=8
+  export LOGGING=1
+  #export SNAPSHOT_TYPE=Full
 else
 if [ "$1" == "firecracerclone" ]; then
   DIR="firecracer"

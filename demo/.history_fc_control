@@ -1,6 +1,20 @@
 #1
-du -sh /tmp/petclinic-fc
+BALLOON_SIZE=600 fireCRaCer.sh -p
 #1
-fireCRaCer.sh -s /tmp/petclinic-fc
+fireCRaCer.sh -q
+#1
+ssh root@172.16.0.2 'jattach `pgrep java` jcmd System.trim_native_heap'
+#1
+ssh root@172.16.0.2 'jattach `pgrep java` jcmd System.zero_unused_memory'
+#1
+ssh root@172.16.0.2 '/opt/tools/kill -q 1 -SIGRTMIN+2 `pgrep java`'
 #1
 ssh root@172.16.0.2 'jattach `pgrep java` jcmd JDK.checkpoint'
+#1
+fireCRaCer.sh -k
+#1
+du -sh /tmp/petclinic-fc
+#1
+la /tmp/petclinic-fc
+#1
+fireCRaCer.sh -s /tmp/petclinic-fc
