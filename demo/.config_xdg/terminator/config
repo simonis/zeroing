@@ -10,7 +10,7 @@
   [[zeroing]]
     background_color = "#ffffff"
     cursor_color = "#aaaaaa"
-    font = Ubuntu Mono 24
+    font = Ubuntu Mono 20
     foreground_color = "#000000"
     scrollback_lines = 5000
     use_system_font = False
@@ -40,14 +40,14 @@
       parent = child0
       order = 0
       position = 336
-      ratio = 0.5007451564828614
+      ratio = 0.5
     [[[terminal2]]]
       type = Terminal
       parent = child1
       order = 0
-      profile = default
+      profile = zeroing
       uuid = af8dd603-b14d-4b85-8989-24cb09ba950c
-      title = Spring Petclinic-Rest Demo
+      title = Spring Petclinic-Rest Demo with CRIU
       command = /bin/bash --noprofile --init-file <( echo ". $MYPATH/create_demo_shell.sh petclinic")
       directory = /tmp
     [[[child3]]]
@@ -60,16 +60,16 @@
       type = Terminal
       parent = child3
       order = 0
-      profile = default
+      profile = zeroing
       uuid = 565c6834-244d-47dd-83f5-dcf088484428
-      title = CRIU
+      title = CRIU Control
       command = /bin/bash --noprofile --init-file <( echo ". $MYPATH/create_demo_shell.sh criu")
       directory = /tmp
     [[[terminal5]]]
       type = Terminal
       parent = child3
       order = 1
-      profile = default
+      profile = zeroing
       uuid = 5d3d133e-bf60-47f9-9da8-d76eb6ab0fd4
       title = tools
       command = /bin/bash --noprofile --init-file <( echo ". $MYPATH/create_demo_shell.sh pmap")
@@ -90,12 +90,47 @@
       parent = child0
       order = 0
       position = 336
-      ratio = 0.5007451564828614
+      ratio = 0.5
     [[[terminal2]]]
       type = Terminal
       parent = child1
       order = 0
-      profile = default
+      profile = zeroing
+      uuid = af8dd603-b14d-4b85-8989-24cb09ba950c
+      title = Spring Petclinic-Rest Demo in Firecracker
+      command = /bin/bash --noprofile --init-file <( echo ". $MYPATH/create_demo_shell.sh firecracker")
+      directory = /tmp
+    [[[terminal3]]]
+      type = Terminal
+      parent = child1
+      order = 1
+      profile = zeroing
+      uuid = 565c6834-244d-47dd-83f5-dcf088484428
+      title = Firecracker Control
+      command = /bin/bash --noprofile --init-file <( echo ". $MYPATH/create_demo_shell.sh fc_control")
+      directory = /tmp
+  [[firecracker_old]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 50:50
+      maximised = False
+      fullscreen = False
+      size = 1159, 676
+      last_active_term = af8dd603-b14d-4b85-8989-24cb09ba950c
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 336
+      ratio = 0.5
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = zeroing
       uuid = af8dd603-b14d-4b85-8989-24cb09ba950c
       title = Spring Petclinic-Rest Demo in Firecracker
       command = /bin/bash --noprofile --init-file <( echo ". $MYPATH/create_demo_shell.sh firecracker")
@@ -110,7 +145,7 @@
       type = Terminal
       parent = child3
       order = 0
-      profile = default
+      profile = zeroing
       uuid = 565c6834-244d-47dd-83f5-dcf088484428
       title = Firecracker Control
       command = /bin/bash --noprofile --init-file <( echo ". $MYPATH/create_demo_shell.sh fc_control")
@@ -119,7 +154,7 @@
       type = Terminal
       parent = child3
       order = 1
-      profile = default
+      profile = zeroing
       uuid = 5d3d133e-bf60-47f9-9da8-d76eb6ab0fd4
       title = tools
       command = /bin/bash --noprofile --init-file <( echo ". $MYPATH/create_demo_shell.sh fc_tools")
