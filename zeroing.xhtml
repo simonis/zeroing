@@ -501,7 +501,7 @@ pre.after.small::after {
 
         <section data-background="images/background_default.jpg">
           <h2 style="text-transform: none;">
-            <a href="https://simonis.github.io/jProfessionals2023/" style="color: inherit;">https://simonis.github.io/jProfessionals2023/</a>
+            <a href="https://simonis.github.io/FOSDEM2024/" style="color: inherit;">https://simonis.github.io/FOSDEM2024/</a>
           </h2>
         </section>
 
@@ -524,6 +524,40 @@ pre.after.small::after {
         </section>
 
         <section data-background="images/background_default.jpg">
+          <h1><a href="https://criu.org">CRIU</a> &amp; <a href="https://wiki.openjdk.org/display/crac">CRaC</a></h1>
+
+          <ul class="before" data-header="CRIU: Checkpoint and Restore In Userspace" style="width: 70%;">
+            <li>Serializes process/tree to the file system</li>
+            <li>Only saves <a href="https://criu.org/Memory_dumps">anonymous/dirty</a> pages</li>
+          </ul>
+          <br/>
+          <br/>
+          <ol class="before fragment" data-header="CRAC: Coordinated Restore at Checkpoint" style="width: 70%;">
+            <li class="fragment">Create a userland checkpoint/restore notification API
+              <ul>
+                <li>Support in <a href="https://docs.spring.io/spring-framework/reference/integration/checkpoint-restore.html">Spring</a>,
+                  <a href="https://micronaut-projects.github.io/micronaut-crac/latest/guide/">Micronaut</a>,
+                  <a href="https://github.com/quarkusio/quarkus/pull/23950">Quarkus</a>,
+                  <a href="https://docs.aws.amazon.com/lambda/latest/dg/snapstart-runtime-hooks.html">AWS Lambda</a>, ...
+                </li>
+              </ul>
+            </li>
+            <li class="fragment">Make the JDK "<em>snapsafe</em>":
+              <ul>
+                <li>i.e. act gracefully on checkpoint/restore &amp; <strong><em>clone</em></strong> events</li>
+              </ul>
+            </li>
+            <li class="fragment">Uses CRIU for checkpoint/restore</li>
+          </ol>
+        </section>
+
+        <section data-background="images/background_default.jpg">
+
+          <h1 style="text-transform: none;">CRIU &amp; CRaC DEMO</h1>
+
+        </section>
+
+        <section data-background="images/background_default.jpg">
           <h1>About <a href="https://firecracker-microvm.github.io/">Firecracker</a></h1>
 
           <ul>
@@ -541,6 +575,8 @@ pre.after.small::after {
             <li><a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/jailer.md">Sandboxing</a>
               (cgroup, chroot, seccomp)</li>
             <li>Apache 2 licensed</li>
+            <li>Use e.g. in AWS <a href="https://aws.amazon.com/lambda/">Lambda</a> &amp;
+              <a href="https://aws.amazon.com/blogs/containers/under-the-hood-fargate-data-plane/">Fargate</a></li>
           </ul>
         </section>
 
@@ -580,263 +616,6 @@ pre.after.small::after {
         </section>
 
         <section data-background="images/background_default.jpg">
-          <h1>Firecracker vs. Docker</h1>
-
-            <ul class="before" data-header="Firecracker" style="width: 60%;">
-              <li class="fragment" data-fragment-index="1">Full KVM virtualization</li>
-              <li class="fragment" data-fragment-index="2">VMs completely isolated (ballooning device)</li>
-              <li class="fragment" data-fragment-index="3">More secure</li>
-              <li class="fragment" data-fragment-index="4">
-                <a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/snapshotting/snapshot-support.md">Snapshot support</a>
-              </li>
-            </ul>
-
-            <ul class="before" data-header="Docker" style="width: 60%;">
-              <li class="fragment" data-fragment-index="1">cgroup/namespace isolation</li>
-              <li class="fragment" data-fragment-index="2">Sharing between containers (COW/page cache)</li>
-              <li class="fragment" data-fragment-index="3">Lightweight</li>
-              <li class="fragment" data-fragment-index="4">Checkpoint/Restore with <a href="https://criu.org/Docker">CRIU</a> </li>
-            </ul>
-
-        </section>
-
-        <section>
-
-          <section data-background="images/background_default.jpg">
-            <h1>CRaC &amp; CRIU</h1>
-
-            <ol class="before" data-header="CRAC: Coordinated Restore at Checkpoint" style="width: 90%;">
-              <li class="fragment">Create a standard checkpoint/restore notification API
-                <ul>
-                  <li>Use <a href="https://github.com/CRaC/org.crac"><code>org.crac</code></a> as a wrapper for:<br/> <code>jdk.crac</code> / <code>javax.crac</code> / <code>-Dorg.crac.Core.Compat=..</code></li>
-                </ul>
-              </li>
-              <li class="fragment">Make the JDK "<em>snapsafe</em>":
-                <ul>
-                  <li>i.e. act gracefully on checkpoint/restore &amp; <strong><em>clone</em></strong> events</li>
-                  <li>state, secrets, time, resources, ...</li>
-                </ul>
-              </li>
-              <li class="fragment">Integrate with checkpoint/restore mechanisms:
-                <ul>
-                  <li>Currently only CRIU</li>
-                </ul>
-              </li>
-            </ol>
-            <br/>
-            <ul class="before fragment" data-header="CRIU: Checkpoint and Restore In Userspace" style="width: 90%;">
-              <li>Serializes single processes to the file system</li>
-            </ul>
-          </section>
-
-          <section data-background="images/background_default.jpg">
-
-            <h1 style="text-transform: none;">Using org.crac</h1>
-
-            <ul style="list-style-type: none;">
-              <li>
-                <pre class="noshadow" style="margin: 0; padding: 15px 0;" data-trim="true">
-                  <code class="java" data-trim="true" data-noescape="true">
-import org.crac.Context;
-import org.crac.Core;
-import <span class="fragment highlight-current-border" data-fragment-index="1">org.crac.Resource</span>;
-
-@Component
-public class MyCheckpointRestoreListener implements <span class="fragment highlight-current-border" data-fragment-index="1">Resource</span> {
-
-  @Autowired
-  public MyCheckpointRestoreListener(...) {
-    <span class="fragment highlight-current-border" data-fragment-index="2">Core.getGlobalContext().register(this)</span>;
-    logger.info("=&gt; MyCheckpointRestoreListener: Registering in {}", Core.getGlobalContext());
-  }
-  @Override
-  public void <span class="fragment highlight-current-border" data-fragment-index="3">beforeCheckpoint</span>(Context&lt;? extends Resource&gt; context) {
-    <span class="fragment highlight-current-border" data-fragment-index="4">logger.info("=&gt; MyCheckpointRestoreListener: beforeCheckpoint")</span>;
-  }
-  @Override
-  public void <span class="fragment highlight-current-border" data-fragment-index="3">afterRestore</span>(Context&lt;? extends Resource&gt; context) {
-    <span class="fragment highlight-current-border" data-fragment-index="4">logger.info("=&gt; MyCheckpointRestoreListener: afterRestore")</span>;
-  }
-}
-                  </code>
-                </pre>
-              </li>
-            </ul>
-          </section>
-
-        </section>
-
-        <section data-background="images/background_default.jpg">
-
-          <h1 style="text-transform: none;">CRaC &amp; CRIU DEMO</h1>
-
-        </section>
-
-        <section data-background="images/background_default.jpg">
-
-          <h1>FireCRaCer</h1>
-
-          <ul class="before" data-header="The Best Of Both Worlds :)">
-            <li class="fragment" data-fragment-index="1">Checkpointing plain/CRaC JDK with Firecracker:
-              <ul>
-                <li>No need to worry about file descriptors, network, shared memory,..</li>
-              </ul>
-            </li>
-            <li class="fragment" data-fragment-index="2">Can't checkpoint a Firecracker VM from within the guest:
-              <ul>
-                <li>Need host cooperation</li>
-              </ul>
-            </li>
-            <li class="fragment" data-fragment-index="3">Maximum security and speed</li>
-            <li class="fragment" data-fragment-index="3">No COW memory sharing (need <a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/ballooning.md">Ballooning</a>/
-              <a href="https://docs.kernel.org/admin-guide/mm/ksm.html">Samepage Merging</a>)</li>
-          </ul>
-
-        </section>
-
-        <section data-background="images/background_default.jpg">
-
-          <h1 style="text-transform: none;">FireCRaCer DEMO</h1>
-
-          <ol>
-            <li>"<em>Unattended</em>" checkpoint/restore with unmodified JDK<br/>&nbsp;</li>
-            <li style="visibility: hidden;">Using a "<em>CRaC</em>"-enhanced JDK inside Firecracker<br/>&nbsp;</li>
-            <li style="visibility: hidden;">Using a "<em>JVMTI-agent</em>" implementing the <code>org.crac</code> API</li>
-          </ol>
-
-        </section>
-
-        <section data-background="images/background_default.jpg">
-
-          <h1 style="text-transform: none;">FireCRaCer DEMO</h1>
-
-          <ol>
-            <li>"<em>Unattended</em>" checkpoint/restore with unmodified JDK<br/>&nbsp;</li>
-            <li>Using a "<em>CRaC</em>"-enhanced JDK inside Firecracker<br/>&nbsp;</li>
-            <li style="visibility: hidden;">Using a "<em>JVMTI-agent</em>" implementing the <code>org.crac</code> API</li>
-          </ol>
-
-        </section>
-
-        <section>
-
-          <section data-background="images/background_default.jpg">
-
-            <h1 style="text-transform: none;">FireCRaCer DEMO</h1>
-
-            <ol>
-              <li>"<em>Unattended</em>" checkpoint/restore with unmodified JDK<br/>&nbsp;</li>
-              <li>Using a "<em>CRaC</em>"-enhanced JDK inside Firecracker<br/>&nbsp;</li>
-              <li>Using a "<em>JVMTI-agent</em>" implementing the <code>org.crac</code> API</li>
-            </ol>
-
-          </section>
-
-          <section data-background="images/background_default.jpg">
-
-            <h1 style="text-transform: none;">Java-agent implementing org.crac</h1>
-
-            <ul style="list-style-type: none;">
-              <li>Injected with <code>-Dorg.crac.Core.Compat=io.simonis.crac</code></li>
-              <li>
-                <pre class="noshadow" style="margin: 0; padding: 15px 0;" data-trim="true">
-                  <code class="java" data-trim="true" data-noescape="true">
-package io.simonis.crac.impl;
-
-public class FirecrackerContext extends Context&lt;Resource&gt; {
-
-  private final ArrayList&lt;WeakReference&lt;Resource&gt;&gt; resources = new ArrayList&lt;&gt;();
-
-  @Override
-  public void register(Resource resource) {
-    resources.add(new WeakReference&lt;Resource&gt;(resource));
-  }
-
-  @Override
-  public void beforeCheckpoint(Context&lt;? extends Resource&gt; context) throws CheckpointException {
-    for (var iterator = resources.listIterator(resources.size()); iterator.hasPrevious();) {
-      Resource r = iterator.previous().get();
-      r.beforeCheckpoint(this);
-      ...
-  @Override
-  public void afterRestore(Context&lt;? extends Resource&gt; context) throws RestoreException {
-    for (var iterator = resources.listIterator(); iterator.hasNext();) {
-      ...
-                  </code>
-                </pre>
-              </li>
-            </ul>
-          </section>
-
-          <section data-background="images/background_default.jpg">
-
-            <h1 style="text-transform: none;">JVMTI-agent controlling threads and GC</h1>
-
-            <ul style="list-style-type: none;">
-              <li>Use JVMTI to suspend/resume threads before/after checkpointing:</li>
-              <li>
-                <pre class="noshadow" style="margin: 0; padding: 15px 0;" data-trim="true">
-                  <code class="cpp" data-trim="true" data-noescape="true">
-jint Java_io_simonis_SuspendResumeAgent_suspendThreads(JNIEnv *env, jclass cls) {
-  jint threads_count;
-  jthread *threads;
-  jvmti-&gt;GetAllThreads(&amp;threads_count, &amp;threads);
-  ...
-  jvmtiError error = jvmti-&gt;SuspendThreadList(threads_count - 1, threads, errors);
-
-jint Java_io_simonis_SuspendResumeAgent_resumeThreads(JNIEnv *env, jclass cls) {
-  jint threads_count;
-  jthread *threads;
-  jvmti-&gt;GetAllThreads(&amp;threads_count, &amp;threads);
-  ...
-  jvmtiError error = jvmti-&gt;ResumeThreadList(threads_count, threads, errors);
-                  </code>
-                </pre>
-              </li>
-              <li>Use JVMTI to perform a full GC before checkpointing:</li>
-              <li>
-                <pre class="noshadow" style="margin: 0; padding: 15px 0;" data-trim="true">
-                  <code class="cpp" data-trim="true" data-noescape="true">
-jint Java_io_simonis_SuspendResumeAgent_forceGC(JNIEnv *env, jclass cls) {
-  jvmtiError error = jvmti->ForceGarbageCollection();
-                  </code>
-                </pre>
-              </li>
-            </ul>
-          </section>
-
-        </section>
-
-        <section data-background="images/background_default.jpg">
-
-          <h1><code>userfaultfd</code></h1>
-
-          <ul>
-            <li class="fragment" data-fragment-index="1">Handling page faults in user space</li>
-            <li class="fragment" data-fragment-index="1">Faulting and fault-handling thread can be in different processes</li>
-            <li class="fragment" data-fragment-index="2">A process creates a <a href="https://man7.org/linux/man-pages/man2/userfaultfd.2.html">userfaultfd</a> object</li>
-            <li class="fragment" data-fragment-index="2">The userfaultfd object can be used (via <a href="https://man7.org/linux/man-pages/man2/ioctl_userfaultfd.2.html"><code>ioctl()</code></a>) to:
-              <ul>
-                <li>Registers memory ranges</li>
-                <li>Handle page faults</li>
-              </ul>
-            </li>
-            <li class="fragment" data-fragment-index="3">Useful for:
-              <ul>
-                <li>Virtual Machine live migration</li>
-                <li><a href="https://www.cons.org/cracauer/cracauer-userfaultfd.html">Implementing GCs</a> (faster than <code>mprotect()</code>/<code>SIGSEGV</code> handler)</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-
-        <section data-background="images/background_default.jpg">
-
-          <h1 style="text-transform: none;">FireCRaCer/<code>userfaultfd</code> &nbsp; DEMO</h1>
-
-        </section>
-
-        <section data-background="images/background_default.jpg">
           <h1>References</h1>
 
           <ul>
@@ -857,9 +636,9 @@ jint Java_io_simonis_SuspendResumeAgent_forceGC(JNIEnv *env, jclass cls) {
           </ul>
         </section>
 
-        <section data-background="images/background_last.jpg">
+        <section data-background="images/background_default.jpg">
           <h2 style="text-transform: none;">
-            <a href="https://simonis.github.io/jProfessionals2023/" style="color: inherit;">https://simonis.github.io/jProfessionals2023/</a>
+            <a href="https://simonis.github.io/FOSDEM2024/" style="color: inherit;">https://simonis.github.io/FOSDEM2024/</a>
           </h2>
         </section>
 
