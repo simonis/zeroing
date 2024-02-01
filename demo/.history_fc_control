@@ -18,3 +18,10 @@ du -sh /tmp/petclinic-fc
 la /tmp/petclinic-fc
 #1
 fireCRaCer.sh -s /tmp/petclinic-fc
+#1
+ssh root@172.16.0.2 'pmap -x `pgrep java` | tail -1'
+#1
+pmap -x `pgrep firecracker` | tail -1
+#1
+curl --silent http://172.16.0.2:9966/petclinic/api/pets \
+       | python3 -m json.tool | tail

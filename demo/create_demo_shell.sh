@@ -20,6 +20,7 @@ export PATH=/share/software/openssh-9.6p1_bin/bin:$PATH
 # Disable the bash builtin 'kill'
 enable -n kill
 export FC=/priv/simonisv/Git/fireCRaCer/deps
+export DATA=$MYPATH/data
 alias la='ls -lago'
 alias c='clear'
 
@@ -28,63 +29,25 @@ export PS1="$ "
 
 DIR=$1
 
-if [ "$1" == "firecracker1" ]; then
-:
-else
-if [ "$1" == "firecracker2" ]; then
-  DIR="firecracker1"
-else
 if [ "$1" == "petclinic" ]; then
   export CONSOLE_LOG_PATTERN="%clr(%d{hh:mm:ss.SSS}){faint} %clr(%.-1p) %.-65m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
   export CRAC_CRIU_PATH=/priv/simonisv/Git/criu/criu/criu
-  export _JAVA_OPTIONS="-Xmx512m -XX:+UseSerialGC -Dlogging.level.org.springframework.web.filter.CommonsRequestLoggingFilter=DEBUG -DMyCommandLineRunner.jsonProcessing=true"
-else
-if [ "$1" == "crac2" ]; then
-:
-else
+  export _JAVA_OPTIONS="-Xmx512m -Xms512m -XX:+UseSerialGC -XX:+PerfDisableSharedMem -Dlogging.level.org.springframework.web.filter.CommonsRequestLoggingFilter=DEBUG -DMyCommandLineRunner.jsonProcessing=true"
+fi
+
 if [ "$1" == "firecracker" ]; then
   export FC_JAVA_OPTIONS="-Xmx512m -Xms512m -XX:+UseSerialGC -DMyCommandLineRunner.jsonProcessing=true -XX:CRaCCheckpointTo=/tmp/petclinic-crac -XX:CREngine=pauseengine -Djdk.crac.resource-policies=/opt/tools/crac-resource-policies.yaml"
   export BOOT_ARGS="sshd=true loglevel=6"
   export VCPU_COUNT=8
   export LOGGING=1
   #export SNAPSHOT_TYPE=Full
-else
-if [ "$1" == "firecracerclone" ]; then
-  DIR="firecracer"
-else
-if [ "$1" == "firecracercmd" ]; then
-  DIR="firecracer"
-else
-if [ "$1" == "uffd" ]; then
-  DIR="firecracer"
-else
-if [ "$1" == "criu1" ]; then
-  export CONSOLE_LOG_PATTERN="%clr(%d{hh:mm:ss.SSS}){faint} %clr(%.-1p) %.-65m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
-else
-if [ "$1" == "criu2" ]; then
-  DIR="criu1"
-  export CONSOLE_LOG_PATTERN="%clr(%d{hh:mm:ss.SSS}){faint} %clr(%.-1p) %.-65m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
-else
-if [ "$1" == "pmap" ]; then
-  DIR="criu"
-  export CONSOLE_LOG_PATTERN="%clr(%d{hh:mm:ss.SSS}){faint} %clr(%.-1p) %.-65m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
-fi
 fi
 
 mkdir -p /tmp/_$DIR
 # Delete on exit
 trap '{ rm -rf -- "/tmp/_$DIR"; }' EXIT
 cd /tmp/_$DIR
-if [ "$1" == "firecracker1" ]; then
+if [ "$1" == "firecracker" ]; then
   truncate -s 0 fc.log && rm -rf fc.sock
 fi
 if [ "$1" == "criu" ]; then

@@ -616,6 +616,133 @@ pre.after.small::after {
         </section>
 
         <section data-background="images/background_default.jpg">
+          <h3>Firecracker process/snapshot and JVM size in MB</h3>
+
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Base</th>
+                <th class="fragment">Checkp.</th>
+                <th>Balloon</th>
+                <th>Snapshot</th>
+                <th>Restore</th>
+                <th>Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2">Firecracker<br/>JVM</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">697</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">661</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">50</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">266</td>
+              </tr>
+              <tr>
+                <td style="text-align: right; padding-top: 0;">534</td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;">534</td>
+                <td style="text-align: right; padding-top: 0;">535</td>
+              </tr>
+              <tr>
+                <td rowspan="2">Crac</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">668</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">672</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">633</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">50</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">272</td>
+              </tr>
+              <tr>
+                <td style="text-align: right; padding-top: 0;">507</td>
+                <td style="text-align: right; padding-top: 0;">292</td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;">292</td>
+                <td style="text-align: right; padding-top: 0;">296</td>
+              </tr>
+              <tr>
+                <td rowspan="2">Crac &amp;<br/>init_on_free</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">1050</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">1050</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">422</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">48</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">267</td>
+              </tr>
+              <tr>
+                <td style="text-align: right; padding-top: 0;">533</td>
+                <td style="text-align: right; padding-top: 0;">302</td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;">302</td>
+                <td style="text-align: right; padding-top: 0;">307</td>
+              </tr>
+              <tr>
+                <td rowspan="2">Crac &amp;<br/>balloon</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">680</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">687</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">430</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">655</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">48</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">271</td>
+              </tr>
+              <tr>
+                <td style="text-align: right; padding-top: 0;">530</td>
+                <td style="text-align: right; padding-top: 0;">303</td>
+                <td style="text-align: right; padding-top: 0;">274</td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;">276</td>
+                <td style="text-align: right; padding-top: 0;">287</td>
+              </tr>
+              <tr>
+                <td rowspan="2">Crac &amp; balloon<br/>init_on_free</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">1050</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">1050</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">436</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">335</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">58</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">276</td>
+              </tr>
+              <tr>
+                <td style="text-align: right; padding-top: 0;">530</td>
+                <td style="text-align: right; padding-top: 0;">308</td>
+                <td style="text-align: right; padding-top: 0;">283</td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;">277</td>
+                <td style="text-align: right; padding-top: 0;">283</td>
+              </tr>
+            </tbody>
+          </table>
+<!--
+              <tr>
+                <td>No CDS</td>
+                <td style="text-align: center;">-</td>
+                <td style="text-align: center;">12.644</td>
+              </tr>
+              <tr class="fragment">
+                <td>CDS (default archive)</td>
+                <td style="text-align: center;">1.156</td>
+                <td style="text-align: center;">12.644</td>
+              </tr>
+              <tr class="fragment">
+                <td>CDS (custom archive)</td>
+                <td style="text-align: center;">3.261</td>
+                <td style="text-align: center;">12.644</td>
+              </tr>
+              <tr class="fragment">
+                <td>CDS + AppCDS</td>
+                <td style="text-align: center;"><span class="fragment highlight-current-border">3.520</span></td>
+                <td style="text-align: center;">12.644</td>
+              </tr>
+-->
+        </section>
+
+        <section data-background="images/background_default.jpg">
           <h1>References</h1>
 
           <ul>

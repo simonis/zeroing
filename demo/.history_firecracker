@@ -1,7 +1,7 @@
 #1
-fireCRaCer.sh -b
+BALLOON_SIZE=0 fireCRaCer.sh -b
 #1
-BOOT_ARGS="init_on_free=1" fireCRaCer.sh
+BOOT_ARGS="init_on_free=1 sshd=true" fireCRaCer.sh
 #1
 fireCRaCer.sh -r /tmp/petclinic-fc
 #1

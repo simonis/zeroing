@@ -13,5 +13,4 @@ java -XX:CRaCCheckpointTo=/tmp/petclinic-crac \
 criu restore --shell-job --display-stats \
                --images-dir /tmp/petclinic-criu
 #1
-java  -XX:+PerfDisableSharedMem \
-        -jar $FC/spring-petclinic-rest-3.2.1-exec.jar
+java -jar $FC/spring-petclinic-rest-3.2.1-exec.jar
