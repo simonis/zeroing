@@ -6,11 +6,11 @@ criu dump --tcp-established --tree `pgrep -f petclinic-rest` \
 	    --skip-zero-pages \
             --images-dir /tmp/petclinic-criu-zero
 #1
+jcmd `pgrep -f petclinic-rest` JDK.checkpoint
+#1
 jcmd `pgrep -f petclinic-rest` System.zero_unused_memory
 #1
 jcmd `pgrep -f petclinic-rest` System.trim_native_heap
-#1
-jcmd `pgrep -f petclinic-rest` JDK.checkpoint
 #1
 kdiff3 $DATA/petclinic.pmap $DATA/petclinic-criu.pmap
 #1

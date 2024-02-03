@@ -542,7 +542,7 @@ pre.after.small::after {
                 </li>
               </ul>
             </li>
-            <li class="fragment">Make the JDK "<em>snapsafe</em>":
+            <li class="fragment">Make the JVM/JDK itself "<em>snapsafe</em>":
               <ul>
                 <li>i.e. act gracefully on checkpoint/restore &amp; <strong><em>clone</em></strong> events</li>
               </ul>
@@ -570,6 +570,10 @@ pre.after.small::after {
                 <th>Request</th>
               </tr>
             </thead>
+            <caption  class="fragment" data-fragment-index="40" style="text-align: left; caption-side: bottom; font-size: medium; padding: 1em 0 0 0;">
+              <a href="https://github.com/checkpoint-restore/criu/pull/2331">
+                <sup style="font-size: small;">*</sup>https://github.com/checkpoint-restore/criu/pull/2331</a>
+            </caption>
             <tbody>
               <tr>
                 <td></td>
@@ -578,20 +582,20 @@ pre.after.small::after {
                 <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="10">522</span></td>
                 <td style="text-align: right;">528</td>
               </tr>
-              <tr class="fragment" data-fragment-index="20">
+              <tr class="fragment" data-fragment-index="40">
+                <td>skip_zero<sup style="font-size: small;">*</sup>
+                </td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="42">763</span></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="46">266</span></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="46">280</span></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="46">289</span></td>
+              </tr>
+              <tr class="fragment" data-fragment-index="60">
                 <td>CRaC</td>
                 <td style="text-align: right;">533</td>
-                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="22">263</span></td>
-                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="24">281</span></td>
-                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="26">295</span></td>
-              </tr>
-              <tr class="fragment" data-fragment-index="40">
-                <td><a href="https://github.com/checkpoint-restore/criu/pull/2331">skip_zero</a>
-                </td>
-                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="42">760</span></td>
-                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="46">251</span></td>
-                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="46">264</span></td>
-                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="46">274</span></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="62">263</span></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="64">281</span></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="66">295</span></td>
               </tr>
               <tr>
               </tr>
