@@ -1,9 +1,14 @@
 #1
 kill -q 1 -SIGRTMIN+2 `pgrep -f petclinic-rest`
 #1
-ssh root@172.16.0.2 'jattach `pgrep java` jcmd System.trim_native_heap'
+criu dump --tcp-established --tree `pgrep -f petclinic-rest` \
+            --shell-job --leave-running --display-stats \
+	    --skip-zero-pages \
+            --images-dir /tmp/petclinic-criu-zero
 #1
-ssh root@172.16.0.2 'jattach `pgrep java` jcmd System.zero_unused_memory'
+jcmd `pgrep -f petclinic-rest` System.zero_unused_memory
+#1
+jcmd `pgrep -f petclinic-rest` System.trim_native_heap
 #1
 jcmd `pgrep -f petclinic-rest` JDK.checkpoint
 #1
