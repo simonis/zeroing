@@ -532,7 +532,7 @@ pre.after.small::after {
           </ul>
           <br/>
           <br/>
-          <ol class="before fragment" data-header="CRAC: Coordinated Restore at Checkpoint" style="width: 70%;">
+          <ol class="before fragment" data-header="CRaC: Coordinated Restore at Checkpoint" style="width: 70%;">
             <li class="fragment">Create a userland checkpoint/restore notification API
               <ul>
                 <li>Support in <a href="https://docs.spring.io/spring-framework/reference/integration/checkpoint-restore.html">Spring</a>,
@@ -555,6 +555,40 @@ pre.after.small::after {
 
           <h1 style="text-transform: none;">CRIU &amp; CRaC DEMO</h1>
 
+        </section>
+
+        <section data-background="images/background_default.jpg">
+          <h3>JVM process/snapshot size in MB</h3>
+
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>JVM RSS</th>
+                <th>Image size</th>
+                <th>Restore</th>
+                <th>Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="10">538</span></td>
+                <td style="text-align: right;">501</td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="10">522</span></td>
+                <td style="text-align: right;">528</td>
+              </tr>
+              <tr class="fragment" data-fragment-index="20">
+                <td>CRaC</td>
+                <td style="text-align: right;">533</td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="22">263</span></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="24">281</span></td>
+                <td style="text-align: right;"><span class="fragment highlight-current-border" data-fragment-index="26">295</span></td>
+              </tr>
+              <tr>
+              </tr>
+            </tbody>
+          </table>
         </section>
 
         <section data-background="images/background_default.jpg">
@@ -615,9 +649,10 @@ pre.after.small::after {
 
         </section>
 
-        <section data-background="images/background_default.jpg">
+        <section style="padding: 0;" data-background="images/background_default.jpg">
+          <!--
           <h3>Firecracker process/snapshot and JVM size in MB</h3>
-
+          -->
           <table>
             <thead>
               <tr>
@@ -632,8 +667,8 @@ pre.after.small::after {
             </thead>
             <tbody>
               <tr>
-                <td rowspan="2"><span class="fragment" data-fragment-index="2">Firecracker</span><br/>
-                  <span class="fragment" data-fragment-index="4">JVM</span></td>
+                <td rowspan="2"><span class="fragment" data-fragment-index="2">Firecracker (host)</span><br/>
+                  <span class="fragment" data-fragment-index="4">JVM (guest)</span></td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;"><span class="fragment highlight-current-border" data-fragment-index="2">697</span></td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
@@ -651,7 +686,7 @@ pre.after.small::after {
               </tr>
 
               <tr class="fragment" data-fragment-index="20">
-                <td rowspan="2">Crac</td>
+                <td rowspan="2">CRaC</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;">668</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;">672</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
@@ -668,8 +703,26 @@ pre.after.small::after {
                 <td style="text-align: right; padding-top: 0;">296</td>
               </tr>
 
+              <tr class="fragment" data-fragment-index="25">
+                <td rowspan="2">trim_native<br/>zero_unused_heap</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">681</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;"><span class="fragment highlight-current-border border-no-bottom" data-fragment-index="26">937</span></td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;"><span class="fragment highlight-current-border" data-fragment-index="27">469</span></td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">51</td>
+                <td style="text-align: right; border-style: none; padding-bottom: 0;">262</td>
+              </tr>
+              <tr class="fragment" data-fragment-index="25">
+                <td style="text-align: right; padding-top: 0;">519</td>
+                <td style="text-align: right; padding-top: 0;"><span class="fragment highlight-current-border border-no-top" data-fragment-index="26">765</span></td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;"></td>
+                <td style="text-align: right; padding-top: 0;">765</td>
+                <td style="text-align: right; padding-top: 0;">766</td>
+              </tr>
+
               <tr class="fragment" data-fragment-index="30">
-                <td rowspan="2">Crac &amp;<br/>init_on_free</td>
+                <td rowspan="2">CRaC &amp;<br/>init_on_free</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;"><span class="fragment highlight-current-border" data-fragment-index="32">1050</span></td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;">1050</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;"></td>
@@ -687,7 +740,7 @@ pre.after.small::after {
               </tr>
 
               <tr class="fragment" data-fragment-index="40">
-                <td rowspan="2">Crac &amp;<br/>balloon</td>
+                <td rowspan="2">CRaC &amp;<br/>balloon</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;">680</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;">687</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;"><span class="fragment highlight-current-border" data-fragment-index="42">430</span></td>
@@ -705,7 +758,7 @@ pre.after.small::after {
               </tr>
 
               <tr class="fragment" data-fragment-index="50">
-                <td rowspan="2">Crac &amp; balloon<br/>init_on_free</td>
+                <td rowspan="2">CRaC &amp; balloon<br/>init_on_free</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;">1050</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;">1050</td>
                 <td style="text-align: right; border-style: none; padding-bottom: 0;"><span class="fragment highlight-current-border" data-fragment-index="52">436</span></td>
@@ -723,47 +776,38 @@ pre.after.small::after {
               </tr>
             </tbody>
           </table>
-<!--
-              <tr>
-                <td>No CDS</td>
-                <td style="text-align: center;">-</td>
-                <td style="text-align: center;">12.644</td>
-              </tr>
-              <tr class="fragment">
-                <td>CDS (default archive)</td>
-                <td style="text-align: center;">1.156</td>
-                <td style="text-align: center;">12.644</td>
-              </tr>
-              <tr class="fragment">
-                <td>CDS (custom archive)</td>
-                <td style="text-align: center;">3.261</td>
-                <td style="text-align: center;">12.644</td>
-              </tr>
-              <tr class="fragment">
-                <td>CDS + AppCDS</td>
-                <td style="text-align: center;"><span class="fragment highlight-current-border">3.520</span></td>
-                <td style="text-align: center;">12.644</td>
-              </tr>
--->
         </section>
 
         <section data-background="images/background_default.jpg">
           <h1>References</h1>
 
           <ul>
-            <li><a href="https://www.usenix.org/conference/nsdi20/presentation/agache">
+            <li><a href="https://criu.org/Main_Page">
+                CRIU</a></li>
+           <li><a href="https://www.usenix.org/conference/nsdi20/presentation/agache">
                 Firecracker: Lightweight Virtualization for Serverless Applications</a></li>
             <li><a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/design.md">
-              Firecracker Design</a></li>
+                Firecracker Design</a></li>
+            <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html">
+                Improving startup performance with Lambda SnapStart</a></li>
+            <!--
             <li><a href="https://www.talhoffman.com/2021/07/18/firecracker-internals/">
-              Firecracker internals: a deep dive inside the technology powering AWS Lambda</a></li>
-            <li><a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/snapshotting/snapshot-support.md">Firecracker snapshot support</a></li>
-            <li><a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/ballooning.md">Firecracker ballooning support</a></li>
-            <li><a href="https://wiki.openjdk.org/display/crac">OpenJDK Project: Coordinated Restore at Checkpoint</a></li>
-            <li><a href="https://criu.org/Docker">CRIU</a></li>
-            <li><a href="https://docs.kernel.org/admin-guide/mm/userfaultfd.html">Userfaultfd kernel documentation</a>
-            <li><a href="https://docs.kernel.org/admin-guide/mm/ksm.html">Kernel Samepage Merging (KSM)</a><br/>&nbsp;</li>
-            <li>FireCRaCer scripts and UffdVisualizer: <a href="https://github.com/simonis/fireCRaCer">https://github.com/simonis/fireCRaCer</a></li>
+                Firecracker internals: a deep dive inside the technology powering AWS Lambda</a></li>
+            -->
+            <li><a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/snapshotting/snapshot-support.md">
+                Firecracker snapshot support</a></li>
+            <li><a href="https://pmhahn.github.io/virtio-balloon/">
+                VirtIO Memory Ballooning</a></li>
+            <li><a href="https://github.com/firecracker-microvm/firecracker/blob/main/docs/ballooning.md">
+                Firecracker ballooning support</a></li>
+            <li><a href="https://wiki.openjdk.org/display/crac">
+                OpenJDK Project: Coordinated Restore at Checkpoint</a></li>
+            <li><a href="https://github.com/torvalds/linux/commit/6471384af">
+                mm: security: introduce init_on_alloc=1 and init_on_free=1 boot options</a>
+            <li><a href="https://docs.kernel.org/admin-guide/mm/ksm.html">
+                Kernel Samepage Merging (KSM)</a><br/>&nbsp;</li>
+            <li>FireCRaCer scripts:
+              <a href="https://github.com/simonis/fireCRaCer">https://github.com/simonis/fireCRaCer</a></li>
             </li>
           </ul>
         </section>

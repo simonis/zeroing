@@ -1,6 +1,10 @@
 #1
 kill -q 1 -SIGRTMIN+2 `pgrep -f petclinic-rest`
 #1
+ssh root@172.16.0.2 'jattach `pgrep java` jcmd System.trim_native_heap'
+#1
+ssh root@172.16.0.2 'jattach `pgrep java` jcmd System.zero_unused_memory'
+#1
 jcmd `pgrep -f petclinic-rest` JDK.checkpoint
 #1
 kdiff3 $DATA/petclinic.pmap $DATA/petclinic-criu.pmap
